@@ -58,6 +58,9 @@ class Searcher(util.ClosableMixin):
     def __contains__(self, term):
         return term in self.term_reader
     
+    def __del__(self):
+        self.close()
+    
     def _copy_methods(self):
         # Copy methods from child doc_reader and term_reader objects onto this
         # object.
